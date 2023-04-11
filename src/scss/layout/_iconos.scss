@@ -1,6 +1,11 @@
+@include desktop {
+    .iconos-nosotros {
+        @include grid(3,2rem);
+    }
+}
 @include tablet {
     .iconos-nosotros {
-        
+        @include grid(3,1.5rem);
     }
 }
 .icono {
