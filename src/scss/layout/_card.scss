@@ -1,5 +1,11 @@
 @include tablet {
     .contenedor-card {
+        @include grid(2, 2rem);
+    }
+}
+
+@include desktop {
+    .contenedor-card {
         @include grid(3, 2rem);
     }
 }
@@ -9,6 +15,7 @@
     border: 1px solid darken($gris, 10);
     .contenido-card {
         padding: 2rem;
+        text-align: center;
     }
     h3, p {
         margin: 0;
@@ -23,13 +30,14 @@
     display: flex;
     list-style: none;
     padding: 0;
+    // max-width: 40rem;
 
     li {
         flex: 1;
         display: flex;
 
         img {
-            flex: 0 0 5rem;
+            flex: 0 0 3rem;
             margin-right: 1rem;
         }
         p {
