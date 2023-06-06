@@ -13,6 +13,7 @@
 .card {
     background-color: lighten($gris, 5);
     border: 1px solid darken($gris, 10);
+    margin-bottom: 2rem;
     .contenido-card {
         padding: 2rem;
         text-align: center;
@@ -21,6 +22,11 @@
         margin: 0;
     }
 }
+
+.resumen-propiedad {
+    padding: 2rem;
+}
+
 .precio {
     color: $verde;
     font-weight: $bold;
