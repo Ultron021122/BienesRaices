@@ -11,7 +11,5 @@ function eventListeners() {
 function navegacionResponsive() {
     const navegacion = document.querySelector('.nav');
 
-    if(navegacion.classList.contains('mostrar')) {
-        
-    }
+    navegacion.classList.toggle('mostrar');
 }
