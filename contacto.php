@@ -1,5 +1,6 @@
 <?php
-  include './includes/templates/header.php';
+  require 'includes/funciones.php';
+  incluirTemplate('header');
 ?>
     <main class="container seccion">
       <h1>Contacto</h1>
@@ -78,18 +79,6 @@
       </form>
     </main>
 
-    <footer class="footer seccion">
-      <div class="container contenedor-footer">
-        <div class="nav">
-          <a href="nosotros.html">Nosotros</a>
-          <a href="anuncios.html">Anuncios</a>
-          <a href="blog.html">Blog</a>
-          <a href="contacto.html">Contacto</a>
-        </div>
-      </div>
-      <p class="copyright">Todos los derechos reservados 2023 &copy;</p>
-    </footer>
-
-    <script src="build/js/bundle.min.js"></script>
-  </body>
-</html>
+<?php
+  incluirTemplate('footer');
+?>
