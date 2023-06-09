@@ -8,3 +8,7 @@
 .boton-verde {
     @include boton($verde, $blanco, inline-block);
 }
+
+.boton-rojo {
+    @include boton($rojo, $blanco, inline-block);
+}

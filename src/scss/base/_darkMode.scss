@@ -32,7 +32,7 @@
         p {
             color: $gris;
         }
-        input:not([type="submit"]),
+        input:not([type="submit"], [type="reset"]),
         textarea,
         select {
             background-color: $grisOscuro;

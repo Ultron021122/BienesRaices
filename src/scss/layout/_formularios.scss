@@ -15,7 +15,7 @@
         text-transform: uppercase;
         display: block;
     }
-    input:not([type="submit"]),
+    input:not([type="submit"], [type="reset"]),
     textarea,
     select {
         padding: 1rem;
@@ -25,6 +25,10 @@
         border: 1px solid $gris;
         border-radius: 1rem;
         margin-bottom: 2rem;
+    }
+
+    input[type="reset"] {
+        margin-left: 1rem;
     }
 
     textarea {
