@@ -3,6 +3,10 @@
 require '../../includes/config/database.php';
 $db = conectarDB();
 
+// Consultar para obtener los vendedores
+$consulta = "SELECT * FROM vendedores";
+$resultado = mysqli_query($db, $consulta);
+
 // Arreglo con mensajes de errores
 $errores = [];
 
@@ -28,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $wc = $_POST['wc'];
     $estacionamiento = $_POST['estacionamiento'];
     $vendedores_id = $_POST['vendedor'];
+    $creado = date('Y/m/d');
 
     if (!$titulo) {
         $errores[] = "Debes de añadir un titulo";
@@ -57,15 +62,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Revisar que el array de errores este vacío
     if (empty($errores)) {
         // Insertar en la base de datos
-        $query = "INSERT INTO propiedades (titulo, precio, descripcion, habitaciones, wc, estacionamiento, vendedores_id) VALUES ( '$titulo',
-        '$precio', '$descripcion', '$habitaciones', '$wc', '$estacionamiento', '$vendedores_id' )";
+        $query = "INSERT INTO propiedades (titulo, precio, descripcion, habitaciones, wc, estacionamiento, creado, vendedores_id) VALUES ( '$titulo',
+        '$precio', '$descripcion', '$habitaciones', '$wc', '$estacionamiento', '$creado', '$vendedores_id' )";
         // echo $query;
 
         $resultado = mysqli_query($db, $query);
         if ($resultado) {
-            echo "Insertado correctamente";
-        } else {
-            echo "Ocurrió un error";
+            // Redireccionar al usuario.
+
+            header('Location: /bienesraices/admin/index.php');
         }
     }
 }
@@ -115,8 +120,10 @@ incluirTemplate('header');
 
             <select name="vendedor">
                 <option value="">-- Seleccione --</option>
-                <option value="1">Juan</option>
-                <option value="2">Ana</option>
+                <?php while( $row = mysqli_fetch_assoc($resultado) ) : ?>
+                    <option <?php echo $vendedores_id === $row['id'] ? 'selected' : ''; ?> value="<?php echo $row['id']; ?>">
+                    <?php echo $row['nombre']." ".$row['apellido']; ?></option>
+                <?php endwhile; ?>
             </select>
         </fieldset>
 
