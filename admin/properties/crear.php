@@ -25,14 +25,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // var_dump($_POST);
     // echo "</pre>";
 
-    $titulo = $_POST['titulo'];
-    $precio = $_POST['precio'];
-    $descripcion = $_POST['descripcion'];
-    $habitaciones = $_POST['habitaciones'];
-    $wc = $_POST['wc'];
-    $estacionamiento = $_POST['estacionamiento'];
-    $vendedores_id = $_POST['vendedor'];
+    // echo "<pre>";
+    // var_dump($_FILES);
+    // echo "</pre>";
+
+    $titulo = mysqli_real_escape_string( $db, $_POST['titulo'] );
+    $precio = mysqli_real_escape_string( $db, $_POST['precio'] );
+    $descripcion = mysqli_real_escape_string( $db, $_POST['descripcion'] );
+    $habitaciones = mysqli_real_escape_string( $db, $_POST['habitaciones'] );
+    $wc = mysqli_real_escape_string( $db, $_POST['wc'] );
+    $estacionamiento = mysqli_real_escape_string( $db, $_POST['estacionamiento'] );
+    $vendedores_id = mysqli_real_escape_string( $db, $_POST['vendedor'] );
     $creado = date('Y/m/d');
+
+    // Asignar files hacia una imagen
+    $imagen = $_FILES['imagen'];
 
     if (!$titulo) {
         $errores[] = "Debes de añadir un titulo";
@@ -55,6 +62,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$vendedores_id) {
         $errores[] = "Elige un vendedor";
     }
+    if (!$imagen['name'] || $imagen['error']) {
+        $errores[] = "La Imagen es Obligatoria";
+    }
+    // Validar por tamaño (100 Kb máximo)
+    $medida = 1000 * 100;
+
+    if($imagen["size"] > $medida) {
+        $errores[] = "La Imagen es muy pesada";
+    }
+
     // echo "<pre>";
     // var_dump($errores);
     // echo "</pre>";
@@ -70,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($resultado) {
             // Redireccionar al usuario.
 
-            header('Location: /bienesraices/admin/index.php');
+            header('Location: /admin/index.php');
         }
     }
 }
@@ -79,14 +96,14 @@ incluirTemplate('header');
 ?>
 <main class="container seccion">
     <h1>Crear Registro</h1>
-    <a href="/bienesraices/admin/index.php" class="boton boton-verde">Volver</a>
+    <a href="/admin/index.php" class="boton boton-verde">Volver</a>
 
     <?php foreach ($errores as $error) : ?>
         <div class="alerta error">
             <?php echo $error; ?>
         </div>
     <?php endforeach; ?>
-    <form class="formulario" method="POST" action="/bienesraices/admin/properties/crear.php">
+    <form class="formulario" method="POST" action="/admin/properties/crear.php" enctype="multipart/form-data">
         <fieldset>
             <legend>Información General</legend>
 
@@ -97,7 +114,7 @@ incluirTemplate('header');
             <input type="number" id="precio" name="precio" value="<?php echo $precio; ?>" placeholder="Precio Propiedad" min="1">
 
             <label for="imagen">Imagen:</label>
-            <input type="file" id="imagen" accept="image/jpeg, image/png">
+            <input type="file" id="imagen" name="imagen" accept="image/jpeg, image/png">
 
             <label for="descripcion">Descripción:</label>
             <textarea id="descripcion" name="descripcion"><?php echo $descripcion; ?></textarea>

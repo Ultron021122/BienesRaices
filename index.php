@@ -161,7 +161,7 @@
     Llena el formulario de contacto y un asesor se pondrá en contacto a la
     brevedad
   </p>
-  <a href="contacto.html" class="boton-amarillo-inline-block">Contactanos</a>
+  <a href="contacto.php" class="boton-amarillo-inline-block">Contactanos</a>
 </section>
 
 <!-- Sección inferior -->

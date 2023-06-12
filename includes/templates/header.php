@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bienes Raíces</title>
-  <link rel="stylesheet" href="/bienesraices/build/css/app.css" />
+  <link rel="stylesheet" href="/build/css/app.css" />
 </head>
 
 <body>
@@ -15,17 +15,17 @@
     <div class="container contenido-header">
       <div class="barra">
         <div class="nav-responsive">
-          <a href="/bienesraices/index.php">
-            <img src="/bienesraices/build/img/logo.svg" alt="Logotipo de Bienes Raíces" />
+          <a href="/index.php">
+            <img src="/build/img/logo.svg" alt="Logotipo de Bienes Raíces" />
           </a>
 
           <div class="mobile-menu">
-            <img src="/bienesraices/build/img/barras.svg" alt="Icono menu responsive" />
+            <img src="/build/img/barras.svg" alt="Icono menu responsive" />
           </div>
         </div>
 
         <div class="derecha">
-          <img class="dark-mode-boton" src="/bienesraices/build/img/dark-mode.svg">
+          <img class="dark-mode-boton" src="/build/img/dark-mode.svg">
           <div class="nav">
             <a href="nosotros.php">Nosotros</a>
             <a href="anuncios.php">Anuncios</a>
