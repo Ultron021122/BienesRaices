@@ -12,3 +12,15 @@
 .boton-rojo {
     @include boton($rojo, $blanco, inline-block);
 }
+
+.boton-rojo-block {
+    @include boton($rojo, $blanco, block);
+}
+
+.boton-verde-block {
+    @include boton($verde, $blanco, block);
+}
+
+.boton-azul-block {
+    @include boton($azul, $blanco, block);
+}

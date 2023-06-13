@@ -3,10 +3,41 @@
     text-align: center;
     color: $blanco;
     font-weight: bold;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     margin: 1rem 0;
 
     &.error {
         background-color: $rojo;
+    }
+
+    &.successful {
+        background-color: $verde;
+    }
+}
+
+table.propiedades {
+    margin-top: 4rem;
+    width: 100%;
+    border-spacing: 0;
+
+    thead {
+        background-color: $verde;
+
+        th:first-child {
+            width: 10%;
+        }
+        
+        th {
+            color: $blanco;
+            padding: 2rem;
+            width: 22.5%;
+        }
+    }
+    tbody {
+        text-align: center;
+    }
+
+    .imagen-tabla {
+        max-width: 100%;
     }
 }
