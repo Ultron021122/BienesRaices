@@ -89,10 +89,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Generar un nombre único
         $extension = strtolower(pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION));
-        $nombreImg = md5( uniqid( rand(), true ) ) . '_' . time() . '.' . $extension;
+        $nombreImg = md5(uniqid(rand(), true)) . '_' . time() . '.' . $extension;
 
         // Subir la imagen
-        move_uploaded_file($imagen['tmp_name'], $carpetaImg . $nombreImg );
+        move_uploaded_file($imagen['tmp_name'], $carpetaImg . $nombreImg);
 
         // Insertar en la base de datos
         $query = "INSERT INTO propiedades (titulo, precio, imagen, descripcion, habitaciones, wc, estacionamiento, creado, vendedores_id) VALUES ( '$titulo',
@@ -111,7 +111,7 @@ require '../../includes/funciones.php';
 incluirTemplate('header');
 ?>
 <main class="container seccion">
-    <h1>Crear Registro</h1>
+    <h1>Crear Propiedad</h1>
     <a href="/admin/index.php" class="boton boton-verde">Volver</a>
 
     <?php foreach ($errores as $error) : ?>

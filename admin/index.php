@@ -21,6 +21,8 @@ incluirTemplate('header');
     <h1>Administrador de Bienes Raíces</h1>
     <?php if (intval($msg) === 1) : ?>
         <p class="alerta successful">Anuncio creado correctamente</p>
+    <?php elseif(intval($msg) === 2): ?>
+        <p class="alerta update">Anuncio actualizado correctamente</p>
     <?php endif; ?>
     <a href="/admin/properties/crear.php" class="boton boton-verde">Nueva Propiedad</a>
 
@@ -43,7 +45,7 @@ incluirTemplate('header');
                     <td><?php echo "$ ".$propiedad['precio']; ?></td>
                     <td>
                         <a href="#" class="boton-rojo-block">Eliminar</a>
-                        <a href="#" class="boton-azul-block">Actualizar</a>
+                        <a href="/admin/properties/actualizar.php?id=<?php echo $propiedad['id']; ?>" class="boton-azul-block">Actualizar</a>
                     </td>
                 </tr>
             <?php endwhile; ?>

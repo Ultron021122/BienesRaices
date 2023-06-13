@@ -24,3 +24,7 @@
 .boton-azul-block {
     @include boton($azul, $blanco, block);
 }
+.boton-azul {
+    @include boton($azul, $blanco, inline-block);
+}
+

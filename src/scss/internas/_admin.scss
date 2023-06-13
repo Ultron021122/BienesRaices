@@ -13,6 +13,10 @@
     &.successful {
         background-color: $verde;
     }
+
+    &.update {
+        background-color: $azul;
+    }
 }
 
 table.propiedades {
@@ -39,5 +43,12 @@ table.propiedades {
 
     .imagen-tabla {
         max-width: 100%;
+    }
+}
+
+@include tablet {
+    .img-small {
+        width: 35%;
+        margin-bottom: 1rem;
     }
 }
