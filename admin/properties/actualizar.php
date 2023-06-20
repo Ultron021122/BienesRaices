@@ -80,22 +80,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Revisar que el array de errores este vacío
     if (empty($errores)) {
 
-        // Subida de archivos
         // Crear carpeta
-        // $carpetaImg = '../../img/';
-        // if (!is_dir($carpetaImg)) {
-        //     mkdir($carpetaImg);
-        // }
+        $carpetaImg = '../../img/';
+        if (!is_dir($carpetaImg)) {
+            mkdir($carpetaImg);
+        }
 
-        // // Generar un nombre único
-        // $extension = strtolower(pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION));
-        // $nombreImg = md5(uniqid(rand(), true)) . '_' . time() . '.' . $extension;
+        // Variable name
+        $nombreImg = '';
 
-        // // Subir la imagen
-        // move_uploaded_file($imagen['tmp_name'], $carpetaImg . $nombreImg);
+        // Subida de archivos
+        if ($imagen['name']) {
+            // Eliminar la imagen previa
+            unlink($carpetaImg . $propiedad['imagen']);
+            // Generar un nombre único
+            $extension = strtolower(pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION));
+            $nombreImg = md5(uniqid(rand(), true)) . '_' . time() . '.' . $extension;
+
+            // Subir la imagen
+            move_uploaded_file($imagen['tmp_name'], $carpetaImg . $nombreImg);
+        } else {
+            $nombreImg = $propiedad['imagen'];
+        }
 
         // Insertar en la base de datos
-        $query = "UPDATE propiedades SET titulo = '$titulo', precio = $precio, descripcion = '$descripcion',
+        $query = "UPDATE propiedades SET titulo = '$titulo', precio = $precio, imagen = '$nombreImg', descripcion = '$descripcion',
         habitaciones = $habitaciones, wc = $wc, estacionamiento = $estacionamiento, vendedores_id = $vendedores_id
         WHERE id = $id";
         // echo $query;
