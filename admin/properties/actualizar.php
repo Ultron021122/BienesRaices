@@ -13,7 +13,7 @@ require '../../includes/config/database.php';
 $db = conectarDB();
 
 // Obtener los datos de la propiedad
-$consultaPropiedad = "SELECT * FROM propiedades WHERE id = ${id}";
+$consultaPropiedad = "SELECT * FROM propiedades WHERE id = $id";
 $resultadoPropiedad = mysqli_query($db, $consultaPropiedad);
 $propiedad = mysqli_fetch_assoc($resultadoPropiedad);
 
