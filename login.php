@@ -1,4 +1,9 @@
 <?php
+require 'includes/funciones.php';
+$auth = statusAutenticado();
+if($auth) {
+    header('Location: /admin');
+}
 // Conexión a la base de datos
 require 'includes/config/database.php';
 $db = conectarDB();
@@ -40,6 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['usuario'] = $usuario['email'];
                 $_SESSION['login'] = true;
                 
+                header('Location: /admin');
+
             } else {
                 $errores[] = "El password es incorrecto";
             }
@@ -50,7 +57,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // Incluye el header
-require 'includes/funciones.php';
 incluirTemplate('header');
 ?>
 <main class="container seccion contenido-centrado">
