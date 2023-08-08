@@ -8,7 +8,7 @@ if (!$id) {
 }
 
 // Conectar a la base de datos
-require 'includes/config/database.php';
+require 'includes/app.php';
 $db = conectarDB();
 
 // Obtener los datos de la propiedad
@@ -20,12 +20,6 @@ if(!$resultado->num_rows) {
   header('Location: /');
 }
 
-// echo "<pre>";
-// var_dump($propiedad);
-// echo "</pre>";
-
-// Incluir templates
-require 'includes/funciones.php';
 incluirTemplate('header');
 ?>
 <!-- Contenido principal -->

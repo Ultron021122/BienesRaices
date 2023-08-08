@@ -1,12 +1,11 @@
 <?php
-require '../../includes/funciones.php';
-$auth = statusAutenticado();
+require '../../includes/app.php';
 
-if(!$auth) {
-    header('Location: /');
-}
+use App\Propiedad;
+
+statusAutenticado();
+
 // Base de datos
-require '../../includes/config/database.php';
 $db = conectarDB();
 
 // Consultar para obtener los vendedores
@@ -27,14 +26,10 @@ $vendedores_id = '';
 
 // Ejecutar el código después que el usuario envía el formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // echo "<pre>";
-    // var_dump($_POST);
-    // echo "</pre>";
 
-    // echo "<pre>";
-    // var_dump($_FILES);
-    // echo "</pre>";
-
+    $propiedades = new Propiedad($_POST);
+    $propiedades->guardar();
+    debuguear($propiedades);
 
     $titulo = mysqli_real_escape_string($db, $_POST['titulo']);
     $precio = mysqli_real_escape_string($db, $_POST['precio']);
@@ -100,9 +95,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Subir la imagen
         move_uploaded_file($imagen['tmp_name'], $carpetaImg . $nombreImg);
 
-        // Insertar en la base de datos
-        $query = "INSERT INTO propiedades (titulo, precio, imagen, descripcion, habitaciones, wc, estacionamiento, creado, vendedores_id) VALUES ( '$titulo',
-        '$precio', '$nombreImg', '$descripcion', '$habitaciones', '$wc', '$estacionamiento', '$creado', '$vendedores_id' )";
         // echo $query;
 
         $resultado = mysqli_query($db, $query);
@@ -156,7 +148,7 @@ incluirTemplate('header');
         <fieldset>
             <legend>Vendedor</legend>
 
-            <select name="vendedor">
+            <select name="vendedores_id">
                 <option value="">-- Seleccione --</option>
                 <?php while ($row = mysqli_fetch_assoc($resultado)) : ?>
                     <option <?php echo $vendedores_id === $row['id'] ? 'selected' : ''; ?> value="<?php echo $row['id']; ?>">

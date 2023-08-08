@@ -1,10 +1,7 @@
 <?php
-require '../../includes/funciones.php';
-$auth = statusAutenticado();
+require '../../includes/app.php';
+statusAutenticado();
 
-if(!$auth) {
-    header('Location: /');
-}
 // Obtener los datos
 $id = $_GET['id'];
 $id = filter_var($id, FILTER_VALIDATE_INT);
@@ -14,7 +11,6 @@ if (!$id) {
 }
 
 // Base de datos
-require '../../includes/config/database.php';
 $db = conectarDB();
 
 // Obtener los datos de la propiedad

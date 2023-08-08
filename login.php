@@ -1,11 +1,8 @@
 <?php
-require 'includes/funciones.php';
-$auth = statusAutenticado();
-if($auth) {
-    header('Location: /admin');
-}
+require 'includes/app.php';
+statusAutenticado();
+
 // Conexión a la base de datos
-require 'includes/config/database.php';
 $db = conectarDB();
 
 // Autenticar el usuario

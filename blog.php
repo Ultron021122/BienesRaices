@@ -1,5 +1,5 @@
 <?php
-  require 'includes/funciones.php';
+  require 'includes/app.php';
   incluirTemplate('header');
 ?>
 
@@ -18,7 +18,7 @@
           </picture>
         </div>
         <div class="texto-entrada">
-          <a href="entrada.html">
+          <a href="entrada.php">
             <h4>Terraza en el techo de tu casa</h4>
             <p class="info-meta">Escrito el: <span>20/10/2021</span> por: <span>Admin</span></p>
             <p>
@@ -42,7 +42,7 @@
           </picture>
         </div>
         <div class="texto-entrada">
-          <a href="entrada.html">
+          <a href="entrada.php">
             <h4>Guía para la decoración de tu hogar</h4>
             <p class="info-meta">Escrito el: <span>20/10/2021</span> por: <span>Admin</span></p>
             <p>
@@ -66,7 +66,7 @@
           </picture>
         </div>
         <div class="texto-entrada">
-          <a href="entrada.html">
+          <a href="entrada.php">
             <h4>Terraza en el techo de tu casa</h4>
             <p class="info-meta">Escrito el: <span>20/10/2021</span> por: <span>Admin</span></p>
             <p>
@@ -90,7 +90,7 @@
           </picture>
         </div>
         <div class="texto-entrada">
-          <a href="entrada.html">
+          <a href="entrada.php">
             <h4>Guía para la decoración de tu hogar</h4>
             <p class="info-meta">Escrito el: <span>20/10/2021</span> por: <span>Admin</span></p>
             <p>
